@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自我介绍网站</title>
+    <!-- 引入Google字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet"> <!-- 添加字体 -->
+    <style>
+        /* 全局样式 */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        main {
+            padding: 2rem;
+            flex: 1;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        p, ul {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            font-family: 'Courgette', cursive; /* 新字体 */
+            font-size: 1.2rem;
+            color: #6a11cb;
+        }
+
+        .section {
+            display: none;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .button-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .button-item {
+            flex: 1 1 calc(45% - 1rem);
+            text-align: center;
+            background: linear-gradient(to right, #ff9966, #ff5e62);
+            color: white;
+            border-radius: 8px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .button-item:hover {
+            background-color: #ff5e62;
+            transform: scale(1.05);
+        }
+
+        .content {
+            text-align: center;
+        }
+
+        .content img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #555;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+    <script>
+function showSection(id) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(id).classList.add('active');
+
+            const links = document.querySelectorAll('nav a');
+            links.forEach(link => {
+                link.classList.remove('active');
+            });
+            document.querySelector(`nav a[href="#${id}"]`).classList.add('active');
+        }
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+    </script>
+</head>
+<body onload="showSection('home');MM_preloadImages('麦.jpg')">
+<header>
+    <h1>欢迎来到11的网站</h1>
+    <nav>
+        <ul>
+            <li><a href="#home" onclick="showSection('home')">个人主页</a></li>
+            <li><a href="#about" onclick="showSection('about')">关于我</a></li>
+            <li><a href="#hobbies" onclick="showSection('hobbies')">爱好</a></li>
+            <li><a href="#contact" onclick="showSection('contact')">联系方式</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <section id="home" class="section active">
+        <h2>Hello！这里是十一的网站，主人叫杨十一 <span class="highlight">10的十, 1的一</span></h2>
+        <p>欢迎来到我的网站！</p>
+        <p>在这里，你可以了解到一些关于【杨十一】的信息。</p>
+        <img src="大一下/全媒体/微信图片_20240605174642.jpg" width="180" height="180" alt=""/>&nbsp; 不是本人！
+    </section>
+    <section id="about" class="section">
+        <h2>个人简介</h2>
+        <img src="乒乓球队 (1)/乒乓球队 (2).png" alt="" width="200" height="200" id="Image6">
+        <p><a href="#" onMouseOver="MM_swapImage('Image6','','麦.jpg',1)" onMouseOut="MM_swapImgRestore()"></a>杨十一，男，19岁（大）半，2004年8月26日出厂于四川省绵阳市涪城区。长1.92m；大学本科教育水平；目前就读于四川大学文学与新闻学院新闻传播学类专业。喜欢尝试新事物，但容易浅尝辄止...</p>
+
+    </section>
+    <section id="hobbies" class="section">
+      <h2>爱好</h2>
+        <div class="button-list">
+            <div class="button-item" onclick="showSection('pingpong')">乒乓球</div>
+            <div class="button-item" onclick="showSection('football')">足球</div>
+            <div class="button-item" onclick="showSection('swimming')">游泳</div>
+            <div class="button-item" onclick="showSection('radwimps')">Radwimps</div>
+        </div>
+</section>
+    <section id="pingpong" class="section">
+        <div class="content">
+            <h2>乒乓球</h2>
+            <img src="大一下/全媒体/乒乓球.jpg" alt="乒乓球">
+            <p>目前主要从事爱好（旧主业篮球因身体原因give up）；文新院队队长；24届川大乒协培训部部长</p>
+            <a href="#hobbies" class="back-button" onclick="showSection('hobbies')">返回</a>
+        </div>
+    </section>
+    <section id="football" class="section">
+        <div class="content">
+            <h2>足球</h2>
+            <img src="大一下/全媒体/足球.jpg" alt="足球">
+            <p>司职守门员，文新学院二队门将；凭借微弱身高优势获得高中足球联赛金手套奖</p>
+            <a href="#hobbies" class="back-button" onclick="showSection('hobbies')">返回</a>
+        </div>
+    </section>
+    <section id="swimming" class="section">
+        <div class="content">
+            <h2>游泳</h2>
+            <img src="大一下/全媒体/游泳.jpg" alt="游泳">
+            <p>游泳（纯野游）；50自由泳最好成绩37.99s,蛙泳=狗刨</p>
+            <a href="#hobbies" class="back-button" onclick="showSection('hobbies')">返回</a>
+        </div>
+    </section>
+    <section id="radwimps" class="section">
+        <div class="content">
+            <h2>Radwimps</h2>
+            <img src="大一下/全媒体/radwimps.jpg" alt="Radwimps">
+            <p>Radwimps是我最喜欢的乐队；2024年4月21日第一次在家门口（成都）看了人生第一次演唱会</p>
+            <a href="#hobbies" class="back-button" onclick="showSection('hobbies')">返回</a>
+        </div>
+    </section>
+    <section id="contact" class="section">
+         <h2>联系方式</h2>
+        <p>可以通过以下方式见识到真正（网上&网下）的我：</p>
+        <ul>
+            <li>QQ：1627484125</li>
+            <li>WeChat：radwimps38389438</li>
+            <li>电话号码：17882080891</li>
+        </ul>
+    </section>
+</main>
+<footer>
+  <p>&copy; 2024 杨十一2023141040193</p>
+</footer>
+</body>
+</html>
